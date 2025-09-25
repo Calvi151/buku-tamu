@@ -3,11 +3,12 @@
  include_once('koneksi.php');
  ?>
  <?php
+
  include_once('templates/header.php');
  ?>
  <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+ 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Buku Tamu</h1>
                     <!-- DataTales Example -->
@@ -22,7 +23,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal</th>
-                                            <th>Nama Kamu/th>
+                                            <th>Nama Kamu</th>
                                             <th>Alamat</th>
                                             <th>No. Telp/Hp</th>
                                             <th>Bertemu dengan</th>
@@ -41,15 +42,24 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        //pemrograman auto-increment
+                                        <?php $no = 1; 
+                                        // Query untuk memanggil data dari tabel buku tamu
+                                        $buku_tamu = query("SELECT * FROM `buku-tamu`");
+                                        foreach($buku_tamu as $tamu) : ?>
                                         <tr>
-                                            <td><</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $tamu['tanggal']?></td>
+                                            <td><?= $tamu['nama_tamu']?></td>
+                                            <td><?= $tamu['alamat']?></td>
+                                            <td><?= $tamu['no_hp']?></td>
+                                            <td><?= $tamu['bertemu']?></td>
+                                            <td><?= $tamu['kepentingan']?></td>
+                                            <td>
+                                                <button class="btn btn-succes" type="button">Ubah</button>
+                                                <button class="btn btn-danger" type="button">Hapus</button></td>
                                         </tr>
+                                        <?php endforeach; ?>
                                         <tr>
                                             <td>Garrett Winters</td>
                                             <td>Accountant</td>
